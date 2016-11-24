@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PairbnbRails</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<%= render partial: "layouts/navbar" %>
+
   <div id="header">
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
@@ -22,6 +27,28 @@
     <% end %>
   </div>
 
-  <%= yield %>
+	<div class="container">
+	  <%= yield %>
+	</div>
+	<div class="pusher"></div>
+	<div id="footer">
+	  <ul>
+	    <li>About Us</li>
+	    <li>Privacy</li>
+	    <li>Terms</li>
+	    <li>Contact Us</li>
+	    <li>Signup for newsletter</li>
+	  </ul>
+	</div>
+
+<div id="user-widget">
+  <% if current_user %>
+    Welcome <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
+	
 </body>
 </html>
