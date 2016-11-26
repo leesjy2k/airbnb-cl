@@ -6,30 +6,30 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Create admin
-User.create(email: "tom@cruise.com",
-						password: "123456",
-						name: "Sean Lee",
-						avatar: File.open(Rails.root + 'app/assets/images/mabul.jpg'),
-						location: "Johor Bahru",
-						state: "Johor",
-						country: "Malaysia",
-						description: "Yes I am happy with my place."
-						)
-puts "==============================================================================="
-puts "Admin user created!"
-puts "==============================================================================="
+# User.create(email: "sean.lee.sijian@gmail.com",
+# 						password: "123456",
+# 						name: "Sean Lee",
+# 						avatar: File.open(Rails.root + 'app/assets/images/lsj.jpg'), 
+# 						location: "Johor Bahru",
+# 						state: "Johor",
+# 						country: "Malaysia",
+# 						description: "Yes I am happy with my place."
+# 						)
+# puts "==============================================================================="
+# puts "Admin user created!"
+# puts "==============================================================================="
 
-# Creates dummy users
+# # Creates dummy users
 
-puts "\n==============================================================================="
+# puts "\n==============================================================================="
 rand(5..15).times do
 	user = User.create(email: Faker::Internet.email,
 										 password: "123456",
 										 name: Faker::Name.name,
 										 avatar: Faker::Avatar.image,
-										 location: ["Singapore", "London", "Paris", "New York", "Tokyo"].sample,
+										 location: Faker::Address.city,
 										 country: Faker::Address.country,
-										 description: Faker::Company.catch_phrase
+										 description: Faker::Lorem.paragraph(2)
 										 )
 	puts "User \"#{user.name}\" created! Email: #{user.email}"
 end
@@ -38,14 +38,14 @@ puts "Total number of users created: #{User.all.count}\n\n"
 
 # Creates random number of listings
 
-puts "\n==============================================================================="
+# puts "\n==============================================================================="
 User.all.each do |user|
 	total = 0
 	rand(1..3).times do
 		listing = user.listings.create(title: Faker::Hipster.sentence(3, false),
 										 description: Faker::Hipster.paragraph(3..10),
 										 home_type: ["Apartment", "Condominium", "Townhouse", "Villa", "Studio", "Loft", "Dorm", "Castle", "Tent", "Boat"].sample,
-										 location: user.location.downcase,
+										 location: Faker::Address.street_address,
 										 guest: rand(1..6),
 										 bedroom: rand(1..5),
 										 price: rand(40..500),

@@ -1,0 +1,29 @@
+<div>All Listings</div>
+
+<% link_to "Add new listing", new_listing_path %>
+
+<table>
+	<thead>
+		<tr>
+			<th>No</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>City</th>
+		</tr>
+	</thead>
+</table>
+
+<body>
+	<% @listings.each.with_index(1) do |listing, index| %>
+		<tr>
+		<td>%=index%><%= '*' if listing.mine?(current_user)%>
+			<td><%=link_to listing.title, listing_path(listing.id)%></td>
+			<td>listing.description</td>
+			<td>listing.price</td>
+			<td>listing.city</td>
+			  </tr>
+  <%end%>
+  </tbody>
+</table>
+	end

@@ -31,12 +31,33 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem "clearance"
+
 gem "bootstrap-sass"
 gem "figaro"
-gem "omniauth"
-gem "omniauth-facebook"
-gem "faker"
+
+# Use Facebook Omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+# Use Clearance for user authorization
+gem 'clearance'
+# Use Font Awesome
+gem 'font-awesome-rails'
+# Use Acts As Taggable for tagging
+gem 'acts-as-taggable-on'
+# Image upload stuffs
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+# Pagination
+gem 'will_paginate'
+# Gems for background jobs work
+gem 'sidekiq'
+# Use Faker to seed fake data
+gem 'faker'
+# Configure Unicorn timeout
+gem 'rack-timeout'
+# Use ElasticSearch for search
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
