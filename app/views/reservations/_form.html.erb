@@ -1,0 +1,11 @@
+<h3>Reserve this listing</h3>
+
+<form action="/listings/<%= @listing.id %>/reservations" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <input type="hidden" name="reservation[user_id]" value="<%= current_user.id %>">
+  <label>Check in</label>
+  <input type="date" name="reservation[check_in]"><br />
+  <label>Check out</label>
+  <input type="date" name="reservation[check_out]"><br />
+  <input type="submit" value="Reserve!">
+</form>
