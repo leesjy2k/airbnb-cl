@@ -34,6 +34,9 @@ class ReservationsController < ApplicationController
   	redirect_to listings_path
   end
 
+  def show
+  	
+
 	private
 
 		def reservation_params
