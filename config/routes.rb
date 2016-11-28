@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'post/index'
+
+  get 'post/form'
+
+  get 'post/new'
+
+  get 'post/edit'
+
+  get 'post/show'
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -9,7 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show, :edit, :update, :destroy] 
-  resources :listings #, only: [:create, :index, :show, :edit, :update, :destroy] 
+  resources :listings do
+    resources :reservations, only: :create
+  end
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
@@ -20,7 +32,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root "users#index"
+  root "listings#index"
+  #root "users#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

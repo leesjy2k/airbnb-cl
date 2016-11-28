@@ -9,6 +9,16 @@
     <%= form.password_field :password %>
   </div>
 
+  <div class="text-field">
+    <%= form.label :email %>
+    <%= form.text_field :email, type: 'email' %>
+  </div>
+
+  <div class="avatar-field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar %>
+  </div>
+
   <div class="submit-field">
     <%= form.submit "Sign Up"%>
   </div>

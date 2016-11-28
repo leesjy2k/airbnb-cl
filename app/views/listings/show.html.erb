@@ -1,56 +1,24 @@
+<h1><%= @listing.title %></h1>
+
+<% if @listing.mine?(current_user) %>
+  <%= link_to "Edit listing", edit_listing_path(@listing) %>
+  <%= link_to "Delete listing", listing_path(@listing), method: :delete, data: {:confirm => 'Are you sure?'} %>
+<% end %>
+
+<ul>
+  <li><%= @listing.description %></li>
+  <li>$<%= @listing.price %></li>
+</ul>
 
 
-<%= provide :banner, 'listing' %>
-<%= provide :banner_image, @listing.images[0].url %>
-<div id="sub-container">
-	<div id="listing-header">
-		<div class="listing-header-user center-content">
-			<a href="/users/<%= @listing.user.id %>"><%= image_tag @listing.user.avatar, class: 'listing-header-avatar' %><br><%= @listing.user.name %></a>
-		</div>
-		<div id="listing-header-detail-container">
-			<h2><%= @listing.title %></h2>
-			<div class="listing-location">
-				<%= @listing.location.titleize %> <i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i><i class="fa fa-star fa-color-yellow"></i>
-			</div>
-			<div>
-				<div class="listing-header-detail center-content"><i class="fa fa-home fa-listing"></i><br><%= @listing.home_type %></div>
-			</div>
-			<div>
-				<div class="listing-header-detail center-content"><i class="fa fa-users fa-listing"></i><br><%= pluralize @listing.guest, 'guest' %></div>
-			</div>
-			<div>
-				<div class="listing-header-detail center-content"><i class="fa fa-bed fa-listing"></i><br><%= pluralize @listing.bedroom, 'bedroom' %></div>
-			</div>
-			<div>
-				<div class="listing-header-detail center-content"><i class="fa fa-cutlery fa-listing"></i><br>
-				<%= @listing.breakfast == true ? "Daily breakfast" : "No breakfast" %></div>
-			</div>
-		</div>
-		<div id="listing-header-booking">
-			<div id="listing-header-price">
-				<span style="font-size: 1.5em;">RM<%= @listing.price %></span>
-			</div>
-			<div style="padding: 20px;">
-				<%= render 'reservations/form_instant' %>
-			</div>
-		</div>
-		<div class="clearfix"></div>
-	</div>
+<% @listing.photos.each do |photo| %>
+  <%= image_tag photo.thumb.url %>
+<% end %>
 
+<% if signed_in? %>
+  <%= render '/reservations/form' %>
+<% else %>
+  <p>Please <%= link_to "sign in", sign_in_path %> to make a reservation</p>
+<% end %>
 
-	<div id="listing-body">
-		<h3>About this listing</h3>
-		<p><%= @listing.description %></p>
-		<div class="tags"><%= display_tags(@listing) %></div>
-
-		<% if !current_user.nil? and current_user.id == @listing.user.id %>
-			<%= link_to (button_tag "Edit", class: "btn btn-block btn-large btn-pink"), edit_listing_path(@listing) %>
-			<%= link_to (button_tag "Delete", class: "btn btn-block btn-large btn-pink"), listing_path(@listing), method: 'delete' %>
-		<% end %>
-		<div id="listing-thumbnail">
-			<% @listing.images.each_with_index do |image, index| %>
-				<%= image_tag @listing.images[index].url, class: 'listing-thumbnail-image' %>
-			<% end %>
-		</div>
-	</div>
-</div>
+<%= link_to "Back to index", listings_path %>

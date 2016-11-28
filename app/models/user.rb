@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   include Clearance::User
-
+mount_uploader :avatar, AvatarUploader
     
   	has_many :listings, :dependent => :destroy
     has_many :authentications, :dependent => :destroy
+    has_many :reservations,
     validates :email, uniqueness: true, presence: true
     enum role: {superadmin: 0, landlord: 1, tenant: 2}
   

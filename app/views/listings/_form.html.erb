@@ -1,29 +1,19 @@
 <%= form_for @listing do |form| %>
-  <div class="text-field">
-    <%= form.label :name %>
-    <%= form.text_field :name, type: 'name' %>
-  </div>
-
-  <div class="text-field">
-    <%= form.label :description %>
-    <%= form.text_field :description, type: 'description' %>
-  </div>
-
-  <div class="text-field">
-    <%= form.label :address %>
-    <%= form.text_field :address, type: 'address' %>
-  </div>
-
-  <div class="text-field">
-    <%= form.label :price %>
-    <%= form.text_field :price, type: 'price' %>
-  </div>
-
-  <div class="submit-field">
-    <%= form.submit "Submit" %>
-  </div>
+  <%= form.label :title %>
+  <%= form.text_field :title %><br />
+  <%= form.label :description %>
+  <%= form.text_field :description %><br />
+  <%= form.label :price %>
+  <%= form.number_field :price %><br />
+  <%= form.label :city %>
+  <%= form.text_field :city %><br />
+  <%= form.label :country %>
+  <%= form.text_field :country %><br />
+  <%= form.label :bed_no %>
+  <%= form.number_field :bed_no %><br />
+  <%= form.file_field :photos, multiple: true %>
+  <%= form.submit %>
 <% end %>
-
 
 
 <% form_for @users do |f|%>

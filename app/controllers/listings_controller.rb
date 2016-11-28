@@ -61,12 +61,15 @@ class ListingsController < ApplicationController
 		if user.tenant?
 			flash[:notice] = "Sorry. You are not allowed to perform this action as a tenant."
 			return redirect_to sign_in_path "Sorry. You cannot list a property as a tenant."
+		else
+			@listing = Listing.new
+		end
 
 	private
 
 		def listing_params
 			params[:listing][:location].downcase!
-			params.require(:listing).permit(:title, :description, :home_type, :location, :guest, :bedroom, :price, {images: []}, :tag_list, :breakfast)
+			params.require(:listing).permit(:title, :description, :home_type, :location, :guest, :bedroom, :price, {photos: []}, :tag_list, :breakfast)
 		end
 end
 
