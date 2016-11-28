@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
 	def create #saving the new listing in the database
 		@listing = current_user.listings.new(listing_params)
 		if @listing.save 
-			redirect_to @listing. notice: "Listing created."
+			redirect_to @listing, notice: "Listing created."
 		else 
 			render 'new'
 		end
@@ -57,13 +57,13 @@ class ListingsController < ApplicationController
 		end
 	end
 
-	def new
-		if user.tenant?
-			flash[:notice] = "Sorry. You are not allowed to perform this action as a tenant."
-			return redirect_to sign_in_path "Sorry. You cannot list a property as a tenant."
-		else
-			@listing = Listing.new
-		end
+	# def new
+	# 	if user.tenant?
+	# 		flash[:notice] = "Sorry. You are not allowed to perform this action as a tenant."
+	# 		return redirect_to sign_in_path "Sorry. You cannot list a property as a tenant."
+	# 	else
+	# 		@listing = Listing.new
+	# 	end
 
 	private
 
@@ -74,4 +74,3 @@ class ListingsController < ApplicationController
 end
 
 
-end
