@@ -3,9 +3,8 @@ class Listing < ActiveRecord::Base
 	belongs_to :user
 	has_many :reservations, :dependent => :destroy
 
-	def mine?(user)
-		if user.nil?
-	else
-		self.user_id = user.user_id
-	end
+	# def mine?(user)
+	# 	if user.nil?
+	# else
+	# 	self.user_id = user.user_id
 end
