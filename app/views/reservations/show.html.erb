@@ -1,0 +1,26 @@
+<p><%= @reservation.user.first_name %></p>
+<p>IN: <%= @reservation.check_in %></p>
+<p>OUT: <%= @reservation.check_out %></p>
+<h3><%= @reservation.listing.title %></h3>
+
+
+<% unless @reservation.paid? %>
+  <%= form_tag("/reservations/#{@reservation.id}/pay", method: "post", id:'checkout') do %>
+    <div id="payment-form"></div>
+    <input type="submit" value="Pay $<%= @reservation.total_price %>">
+  <% end %>
+
+  <script src="https://js.braintreegateway.com/js/braintree-2.30.0.min.js"></script>
+  <script>
+  // We generated a client token for you so you can test out this code
+  // immediately. In a production-ready integration, you will need to
+  // generate a client token on your server (see section below).
+  var clientToken = gon.client_token;
+
+  braintree.setup(clientToken, "dropin", {
+    container: "payment-form"
+  });
+  </script>
+<% else %>
+  <h4>Hooray!!! You paid it!! </h4>
+<% end %>

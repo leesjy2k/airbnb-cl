@@ -40,4 +40,12 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 3000,
+    domain:               'localhost',
+    user_name:            ENV['GOOGLE_EMAIL'],
+    password:             ENV['GOOGLE_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 end

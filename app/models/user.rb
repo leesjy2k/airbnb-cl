@@ -4,9 +4,9 @@ mount_uploader :avatar, AvatarUploader
     
   	has_many :listings, :dependent => :destroy
     has_many :authentications, :dependent => :destroy
-    has_many :reservations,
+    has_many :reservations
     validates :email, uniqueness: true, presence: true
-    enum role: {superadmin: 0, landlord: 1, tenant: 2}
+    enum role: {tenant: 0, host: 1, admin: 2}
   
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|

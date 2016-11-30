@@ -1,11 +1,11 @@
 class ReservationMailer < ApplicationMailer
 
-	def booking_email(customer, host, reservation_id)
+	def booking_email(tenant, host, reservation_id)
 
-		@customer = customer
+		@tenant = tenant
 		@host = host
 		@reservation_id = reservation_id
-		mail(to: @customer.email, subject:"Booking Confirmed")
+		mail(to: @tenant.email, subject:"Booking Confirmed")
 
 	end
 

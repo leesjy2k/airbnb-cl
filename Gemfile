@@ -73,6 +73,7 @@ group :development do
 
   gem 'letter_opener'
 
-  gem 'sidekiq'
+
+  gem 'braintree'
 end
 

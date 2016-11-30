@@ -4,6 +4,13 @@
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
 
+    <!-- Hardcode a radio button here that input its own individual params rather than being under 'users' -->
+    <div class="radio-button">
+      <label for="role">Register as</label>:
+      <input type="radio" name="role" value="0" checked> Tenant<br>
+      <input type="radio" name="role" value="1"> Host<br>
+    </div>
+
     <div class="submit-field">
       <%= form.submit %>
     </div>
