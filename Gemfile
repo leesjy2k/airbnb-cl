@@ -31,8 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+#for front-end
 gem "bootstrap-sass"
+#for safety
 gem "figaro"
 
 # Use Facebook Omniauth
@@ -58,9 +59,25 @@ gem 'rack-timeout'
 # Use ElasticSearch for search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-
+# Implement dynamic search
 gem 'pg_search'
+#fix redis-namespace usage?
+gem 'redis-namespace'
+#for pagination
+gem 'kaminari'
 
+#braintree for sandbox api
+gem 'braintree'
+
+gem 'foreman'
+# A gem that do 12 things
+gem 'rails_12factor', group: :production
+
+# To run unicorn server in heroku
+gem 'unicorn', group: :production
+
+# Timeout for unicorn
+gem 'rack-timeout'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -76,6 +93,6 @@ group :development do
   gem 'letter_opener'
 
 
-  gem 'braintree'
+
 end
 
