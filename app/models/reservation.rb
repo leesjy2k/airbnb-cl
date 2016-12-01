@@ -13,4 +13,13 @@ class Reservation < ActiveRecord::Base
 	def overlaps?(other_reservation)
     	(self.checkin - other_reservation.checkout) * (other_reservation.checkin - self.checkout) >= 0
   	end
+
+  	def paid!
+	    self.paid = true
+	    self.save!
+	end
+
+	def paid?
+	    self.paid
+	end
 end

@@ -1,0 +1,5 @@
+<h1>Congratulations! Your listing has been booked by <%=@tenant.name%></h1>
+
+<p>
+You can view the details of the your new reservation: <%= link_to "link", listing_reservation_url(@host.id, @reservation.id) %>
+</p>

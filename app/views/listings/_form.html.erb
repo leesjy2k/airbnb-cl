@@ -5,20 +5,12 @@
   <%= form.text_field :description %><br />
   <%= form.label :price %>
   <%= form.number_field :price %><br />
-  <%= form.label :city %>
-  <%= form.text_field :city %><br />
-  <%= form.label :country %>
-  <%= form.text_field :country %><br />
-  <%= form.label :bed_no %>
-  <%= form.number_field :bed_no %><br />
+  <%= form.label :location %>
+  <%= form.text_field :location %><br />
+  <%= form.label :bedroom %>
+  <%= form.number_field :bedroom %><br />
   <%= form.file_field :photos, multiple: true %>
   <%= form.submit %>
 <% end %>
 
 
-<% form_for @users do |f|%>
-  <%= f.radio_button :role, 'landlord', :checked => true %>
-  <%= label :role, 'Landlord' %>
-  <%= f.radio_button :role, 'tenant' %>
-  <%= label :role, 'Tenant' %>
-<% end %>
