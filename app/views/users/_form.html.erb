@@ -1,15 +1,19 @@
 
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :avatar %><br>
+    <%= f.file_field :avatar %>
   </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-
-  <div class="avatar-field">
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar %>
+  <div class="radio-button">
+    <label for="role">Register as</label>:
+    <input type="radio" name="role" value="0" checked> Tenant<br>
+    <input type="radio" name="role" value="1"> Host<br>
   </div>

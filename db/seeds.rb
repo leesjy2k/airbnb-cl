@@ -29,7 +29,8 @@ rand(5..15).times do
 										 avatar: Faker::Avatar.image,
 										 location: Faker::Address.city,
 										 country: Faker::Address.country,
-										 description: Faker::Lorem.paragraph(2)
+										 description: Faker::Lorem.paragraph(2), 
+										 role: rand(0..1)
 										 )
 	puts "User \"#{user.name}\" created! Email: #{user.email}"
 end
@@ -49,8 +50,8 @@ User.all.each do |user|
 										 guest: rand(1..6),
 										 bedroom: rand(1..5),
 										 price: rand(40..500),
-										 breakfast: [true, false].sample,
-										 tag_list: randomize_tags)
+										 breakfast: [true, false].sample
+								)
 		listing.images = [File.open(Rails.root + "app/assets/images/listings/#{rand(1..12)}.jpg")]
 		listing.save!
 		total += 1

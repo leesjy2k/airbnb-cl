@@ -15,9 +15,9 @@ class ReservationsController < ApplicationController
     if reservation.save
       # ReservationJob.perform_later(current_user, listing.user, reservation.id)
       ReservationMailer.booking_email(current_user, listing.user, reservation.id).deliver_later
-      redirect_to listings_path(listing), notice: 'reservation succeed'
+      redirect_to listings_path(listing), notice: 'reservation succeeded'
     else
-      redirect_to listings_path(listing), notice: 'reservation failure'
+      redirect_to listings_path(listing), notice: 'reservation failed'
     end
   end
 

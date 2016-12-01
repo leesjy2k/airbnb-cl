@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  get 'post/index'
-
-  get 'post/form'
-
-  get 'post/new'
-
-  get 'post/edit'
-
-  get 'post/show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -18,7 +9,7 @@ Rails.application.routes.draw do
       only: [:create, :edit, :update]
   end
 
-  resources :users, only: [:show, :edit, :update, :destroy] 
+  resources :users
   resources :listings do
     resources :reservations, only: :create
   end

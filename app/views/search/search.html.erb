@@ -1,0 +1,19 @@
+<h1>Listing Search</h1>
+
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+
+<ul>
+  <% @listings.each do |listing| %>
+    <li>
+      <h3>
+        <%= link_to listing.title, controller: "listings", action: "show", id: listing_id%>
+      </h3>
+    </li>
+  <% end %>
+</ul>
