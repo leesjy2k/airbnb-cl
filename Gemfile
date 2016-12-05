@@ -48,14 +48,14 @@ gem 'acts-as-taggable-on'
 # Image upload stuffs
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
+gem 'fog'
 # Pagination
 gem 'will_paginate'
 # Gems for background jobs work
 gem 'sidekiq'
 # Use Faker to seed fake data
 gem 'faker'
-# Configure Unicorn timeout
-gem 'rack-timeout'
+
 # Use ElasticSearch for search
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
@@ -76,6 +76,8 @@ gem 'rails_12factor', group: :production
 # To run unicorn server in heroku
 gem 'unicorn', group: :production
 
+# get ruby variable into js
+gem 'gon'
 # Timeout for unicorn
 gem 'rack-timeout'
 group :development, :test do

@@ -1,7 +1,19 @@
 class ListingsController < ApplicationController
 
 	def index # display all listings
-		@listings = Listing.all
+		page = params[:page]
+	    page ||= 1
+
+	    query = params[:query]
+	    query ||= ""
+
+	    # @index = Listing.text_search(query).page(page).per(10)
+	    @index = Listing.text_search(query)
+	    @index = @index.price_min(params[:price_min]) if params[:price_min].present? 
+	    @index = @index.price_max(params[:price_max]) if params[:price_max].present?
+	    @index = @index.limit_location(params[:limit_location]) if params[:limit_location].present?
+	    @index = @index.page(page).per(10)
+  end
 	end
 
 	def show # display a specific listing

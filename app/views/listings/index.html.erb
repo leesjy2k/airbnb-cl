@@ -30,3 +30,17 @@
     <% end %>
   </tbody>
 </table>
+
+    <h5>Filter by:</h5>
+
+    <%= label_tag :price_min , "Minimum Price: " %>
+    <%= text_field_tag :price_min %>
+    <br>
+    <%= label_tag :price_max , "Maximum Price: " %>
+    <%= text_field_tag :price_max %> <!-- number_field_tag -->
+    <br>
+    <%= label_tag :limit_location , "Location: " %>
+    <%= text_field_tag :limit_location %>
+    <br>
+    <%= submit_tag 'search' %>
+  <% end %>
