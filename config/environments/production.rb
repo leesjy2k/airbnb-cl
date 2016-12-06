@@ -92,7 +92,7 @@ Rails.application.configure do
    :enable_starttls_auto => true
   }
 
-
+Elasticsearch::Model.client = Elasticsearch::Client.new host: ENV['SEARCHBOX_URL']
 end
 
 
