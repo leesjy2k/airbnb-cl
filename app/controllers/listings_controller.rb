@@ -13,7 +13,6 @@ class ListingsController < ApplicationController
 	    @index = @index.price_max(params[:price_max]) if params[:price_max].present?
 	    @index = @index.limit_location(params[:limit_location]) if params[:limit_location].present?
 	    @index = @index.page(page).per(10)
-  end
 	end
 
 	def show # display a specific listing
