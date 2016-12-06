@@ -130,3 +130,4 @@ class PasswordsController < Clearance::PasswordsController
   end
 
 end
+end
