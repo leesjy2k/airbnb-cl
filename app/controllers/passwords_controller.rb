@@ -1,4 +1,4 @@
-equire 'active_support/deprecation'
+require 'active_support/deprecation'
 
 class PasswordsController < ApplicationController
 
